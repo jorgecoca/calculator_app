@@ -1,0 +1,10 @@
+name: calculator
+description: Calculator - Pure Dart package with simple calculatios
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+
+dev_dependencies:
+
