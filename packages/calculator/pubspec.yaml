@@ -1,5 +1,5 @@
 name: calculator
-description: Calculator - Pure Dart package with simple calculatios
+description: Calculator - Pure Dart package with simple calculations
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -7,4 +7,4 @@ environment:
 dependencies:
 
 dev_dependencies:
-
+  test: 1.15.2
