@@ -1,32 +1,47 @@
-import 'package:calculator_app/home_page.dart';
-import 'package:calculator_app/inherited_widgets/inherited_widgets.dart';
-import 'package:flutter/material.dart';
 import 'package:calculator/calculator.dart';
+import 'package:calculator_app/operation.dart';
+import 'package:calculator_app/two_digit_operation.dart';
+import 'package:flutter/material.dart';
 
-void main() async {
-  runApp(
-    CalculatorApp(
-      calculator: Calculator(),
-    ),
-  );
-}
+void main() => runApp(CalculatorApp());
 
 class CalculatorApp extends StatelessWidget {
-  const CalculatorApp({
-    Key key,
-    @required this.calculator,
-  })  : assert(calculator != null),
-        super(key: key);
-
-  final Calculator calculator;
-
   @override
   Widget build(BuildContext context) {
+    final calculator = Calculator();
     return MaterialApp(
-      title: 'Calculator',
-      home: InheritedCalculator(
-        calculator: calculator,
-        child: HomePage(),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Calculator'),
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.all(12),
+            child: Column(
+              children: [
+                TwoDigitOperation(
+                  calculator: calculator,
+                  operation: Operation.add,
+                ),
+                Divider(),
+                TwoDigitOperation(
+                  calculator: calculator,
+                  operation: Operation.substract,
+                ),
+                Divider(),
+                TwoDigitOperation(
+                  calculator: calculator,
+                  operation: Operation.multiply,
+                ),
+                Divider(),
+                TwoDigitOperation(
+                  calculator: calculator,
+                  operation: Operation.divide,
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
