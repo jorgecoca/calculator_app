@@ -20,6 +20,7 @@ class _TwoDigitOperationState extends State<TwoDigitOperation> {
   final _bottomTextController = TextEditingController();
 
   String _operationResult;
+  String _resultAfterAnimation;
 
   @override
   void initState() {
@@ -41,6 +42,7 @@ class _TwoDigitOperationState extends State<TwoDigitOperation> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TextFormField(
+          key: Key('textField_top_${widget.operation.description}'),
           controller: _topTextController,
           keyboardType: TextInputType.number,
         ),
@@ -55,15 +57,27 @@ class _TwoDigitOperationState extends State<TwoDigitOperation> {
             ),
             Expanded(
               child: TextFormField(
+                key: Key('textField_bottom_${widget.operation.description}'),
                 controller: _bottomTextController,
                 keyboardType: TextInputType.number,
               ),
             ),
           ],
         ),
-        Text(
-          'is ${_operationResult ?? '???'}',
-          style: Theme.of(context).textTheme.headline5,
+        AnimatedContainer(
+          duration: Duration(seconds: 1),
+          curve: Curves.linear,
+          color:
+              _operationResult == null ? Colors.transparent : Colors.lightGreen,
+          onEnd: () {
+            setState(() {
+              _resultAfterAnimation = _operationResult;
+            });
+          },
+          child: Text(
+            'is ${_resultAfterAnimation ?? '???'}',
+            style: Theme.of(context).textTheme.headline5,
+          ),
         ),
       ],
     );
