@@ -14,8 +14,17 @@ void main() {
     group('add', () {
       testWidgets('shows result when given two numbers', (tester) async {
         await tester.pumpWidget(CalculatorApp());
-        await tester.enterText(find.byKey(Key('textField_top_plus')), '3');
-        await tester.enterText(find.byKey(Key('textField_bottom_plus')), '6');
+        final topTextFieldFinder = find.byKey(Key('textField_top_plus'));
+        final bottomTextFieldFinder = find.byKey(Key('textField_bottom_plus'));
+
+        await tester.ensureVisible(topTextFieldFinder);
+        await tester.tap(topTextFieldFinder);
+        await tester.enterText(topTextFieldFinder, '3');
+
+        await tester.ensureVisible(bottomTextFieldFinder);
+        await tester.tap(bottomTextFieldFinder);
+        await tester.enterText(bottomTextFieldFinder, '6');
+
         await tester.pumpAndSettle();
         expect(find.text('is 9.0'), findsOneWidget);
       });
