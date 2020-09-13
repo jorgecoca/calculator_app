@@ -1,5 +1,6 @@
 import 'package:calculator_app/main.dart';
 import 'package:calculator_app/two_digit_operation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -9,6 +10,11 @@ void main() {
         (WidgetTester tester) async {
       await tester.pumpWidget(CalculatorApp());
       expect(find.byType(TwoDigitOperation), findsNWidgets(4));
+    });
+
+    testWidgets('there are zero buttons in the screen', (tester) async {
+      await tester.pumpWidget(CalculatorApp());
+      expect(find.byType(RaisedButton), findsNothing);
     });
 
     group('add', () {
