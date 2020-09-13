@@ -3,12 +3,15 @@ import 'package:calculator_app/operation.dart';
 import 'package:calculator_app/two_digit_operation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/mockito.dart';
+
+class MockCalculator extends Mock implements Calculator {}
 
 void main() {
   Calculator calculator;
 
   setUp(() {
-    calculator = Calculator();
+    calculator = MockCalculator();
   });
 
   group('TwoDigitOperation', () {
