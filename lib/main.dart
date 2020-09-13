@@ -1,5 +1,7 @@
 import 'package:calculator/calculator.dart';
 import 'package:calculator_app/operation.dart';
+import 'package:calculator_app/pi.dart';
+import 'package:calculator_app/power_of_two.dart';
 import 'package:calculator_app/two_digit_operation.dart';
 import 'package:flutter/material.dart';
 
@@ -17,28 +19,34 @@ class CalculatorApp extends StatelessWidget {
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.all(12),
-            child: Column(
-              children: [
-                TwoDigitOperation(
-                  calculator: calculator,
-                  operation: Operation.add,
-                ),
-                Divider(),
-                TwoDigitOperation(
-                  calculator: calculator,
-                  operation: Operation.substract,
-                ),
-                Divider(),
-                TwoDigitOperation(
-                  calculator: calculator,
-                  operation: Operation.multiply,
-                ),
-                Divider(),
-                TwoDigitOperation(
-                  calculator: calculator,
-                  operation: Operation.divide,
-                ),
-              ],
+            child: SafeArea(
+              child: Column(
+                children: [
+                  PowerOfTwo(calculator: calculator),
+                  Divider(),
+                  Pi(calculator: calculator),
+                  Divider(),
+                  TwoDigitOperation(
+                    calculator: calculator,
+                    operation: Operation.add,
+                  ),
+                  Divider(),
+                  TwoDigitOperation(
+                    calculator: calculator,
+                    operation: Operation.substract,
+                  ),
+                  Divider(),
+                  TwoDigitOperation(
+                    calculator: calculator,
+                    operation: Operation.multiply,
+                  ),
+                  Divider(),
+                  TwoDigitOperation(
+                    calculator: calculator,
+                    operation: Operation.divide,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
