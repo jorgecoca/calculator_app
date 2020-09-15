@@ -6,6 +6,14 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('CalculatorApp', () {
+    testWidgets('matches golden file', (tester) async {
+      await tester.pumpWidget(CalculatorApp());
+      await expectLater(
+        find.byType(CalculatorApp),
+        matchesGoldenFile('goldens/calculator_app.png'),
+      );
+    });
+
     testWidgets('renders four widgets of type TwoDigitOperation',
         (WidgetTester tester) async {
       await tester.pumpWidget(CalculatorApp());
