@@ -39,6 +39,7 @@ void main() {
         );
         await tester.pumpAndSettle();
         expect(find.text('is 25.0'), findsOneWidget);
+        verify(calculator.add(3, 1)).called(1);
       });
     });
 
