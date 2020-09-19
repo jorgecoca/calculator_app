@@ -1,0 +1,10 @@
+# Check out https://docs.codemagic.io/yaml/yaml/ for more information
+
+workflows:
+    flutter-widget:
+        name: Flutter Widget
+        environment:
+            flutter: stable
+        scripts:
+            - flutter packages pub get
+            - flutter test --exclude-tags='no-ci'
