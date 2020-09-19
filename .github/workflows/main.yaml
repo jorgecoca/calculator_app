@@ -1,0 +1,17 @@
+name: calculator_app_test
+
+on: pull_request
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v1.3.0
+        with:
+          flutter-version: "1.20.4"
+          channel: stable
+      - name: Install dependencies
+        run: flutter packages get
+      - name: Run tests
+        run: flutter test --exclude-tags='no-ci'
